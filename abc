@@ -1,0 +1,17 @@
+vue-router的总结
+   -.路由引入的两总方式
+     1.1：import与require的引入可以节约资源，优化性能，按需加载路由资源
+   二.动态路由的配置
+     2.1：例如'/user/:id' 在父组件通过$route.params.id。对应的值都会设置到$route.params
+     2.2:嵌套路由需要使用children组件：例如:children 在父组件中使用<router-view>     2.3:路由的链接方式有:编程时：$router.push() 和导航式 <router-link to> 其中这两种方式中如果有动态路由则需要使用参数
+   三:数据共享资源库vuex
+      通过使用vuex插件很好的做到了项目中组件共享数据的作用,通过vuex.store()创建一个数据共享库，并在全局引用main.js引入。其中status为状态,如果想要修改status中的数据需要在页面中调用this.$store.dispatch('方法名',参数) 然后在actions中调用函数接收参数。在通过commit()提交给mutations最后通过mutations修改status中的数据响应在页面中
+      3.1vuex的五个关键的核心state,Getters,Mutations,Actions,Modules
+  四:组件之间的传参
+      1.非父子组件通过bus总线
+      2.父子组件通过$emit('函数名’) 在父组件中通过@函数名="另一个函数" 另一个函数名监听变化并进行处理
+   五:keep-alive逐渐
+      这是一个缓存组件，不需要每次渲染请求数据时可以使用。如果不需要缓存组件乐意在路由中配置还可以加入include和exclude 。另外一种方式可通过actived钩子函数
+   六:key指的是用
+      key可以高效的渲染虚的dom并不需要从开始就寻找元素。key是一个标识
+
